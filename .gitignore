@@ -17,6 +17,9 @@ env/
 .DS_Store
 Thumbs.db
 
+# Datasets
+training_datasets/
+
 # Model checkpoints
 *.pt
 *.pth
