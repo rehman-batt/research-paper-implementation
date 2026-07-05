@@ -35,44 +35,44 @@ class AlexNet(nn.Module):
         # input: (3, 227, 227)  (227x227 required: conv1 has no padding)
         self.conv1 = nn.Sequential(
             nn.Conv2d(3, 96, 11, 4),  # -> (96, 55, 55)
-            nn.ReLU(),
+            nn.ReLU(inplace=True),
             nn.LocalResponseNorm(5, 0.0001, 0.75, 2),
             nn.MaxPool2d(3, 2)  # -> (96, 27, 27)
         )
 
         self.conv2 = nn.Sequential(
             nn.Conv2d(96, 256, 5, 1, 2),  # -> (256, 27, 27)
-            nn.ReLU(),
+            nn.ReLU(inplace=True),
             nn.LocalResponseNorm(5, 0.0001, 0.75, 2),
             nn.MaxPool2d(3, 2)  # -> (256, 13, 13)
         )
 
         self.conv3 = nn.Sequential(
             nn.Conv2d(256, 384, 3, 1, 1),  # -> (384, 13, 13)
-            nn.ReLU()
+            nn.ReLU(inplace=True)
         )
 
         self.conv4 = nn.Sequential(
             nn.Conv2d(384, 384, 3, 1, 1),  # -> (384, 13, 13)
-            nn.ReLU()
+            nn.ReLU(inplace=True)
         )
 
         self.conv5 = nn.Sequential(
             nn.Conv2d(384, 256, 3, 1, 1),  # -> (256, 13, 13)
-            nn.ReLU(),
+            nn.ReLU(inplace=True),
             nn.MaxPool2d(3, 2)  # -> (256, 6, 6)
         )
 
         # flatten: (256, 6, 6) -> 9216
         self.fc1 = nn.Sequential(
             nn.Linear((256 * 6 * 6), 4096),  # -> 4096
-            nn.ReLU(),
+            nn.ReLU(inplace=True),
             nn.Dropout(0.50)
         )
 
         self.fc2 = nn.Sequential(
             nn.Linear(4096, 4096),  # -> 4096
-            nn.ReLU(),
+            nn.ReLU(inplace=True),
             nn.Dropout(0.50)
         )
 
