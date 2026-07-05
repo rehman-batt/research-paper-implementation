@@ -1,0 +1,30 @@
+model: alexnet
+num_classes: 1000
+
+data: 
+  root: training_datasets/imagenet
+  image_size: 227
+  transform: alexnet
+
+training: 
+  epochs: 100
+  batch_size: 128
+  num_workers: 4
+
+optimizer:
+  name: sgd
+  lr:  0.01
+  momentum: 0.9
+  weight_decay:  0.0005
+
+scheduler:
+  name: step
+  step_size: 30 # paper does it whenever val loss plateaus
+  gamma: 0.1
+
+checkpointing:
+  save_dir: checkpoints/alexnet
+  frequency: 5 #epochs
+  
+
+
