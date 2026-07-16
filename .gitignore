@@ -24,3 +24,6 @@ training_datasets/
 *.pt
 *.pth
 *.ckpt
+
+# Local docs
+PROJECT_STRUCTURE.md
