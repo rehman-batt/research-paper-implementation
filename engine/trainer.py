@@ -32,7 +32,7 @@ def train_one_epoch(model: nn.Module, train_loader: DataLoader, optimizer: Optim
     n = len(train_loader)
     return epoch_loss / n, epoch_top1_acc / n, epoch_top5_acc / n
 
-def eval_one_epoch(model: nn.Module, val_loader: DataLoader, loss_fn: Callable, device: str | torch.device ='cpu') -> tuple[float, float, float]:
+def eval_one_epoch(model: nn.Module, val_loader: DataLoader, loss_fn: Callable, device: str | torch.device   ='cpu') -> tuple[float, float, float]:
 
     epoch_loss = 0.0
     epoch_top1_acc = 0.0
